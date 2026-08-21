@@ -16,7 +16,7 @@ Chụp ảnh toàn màn hình, giữ thanh địa chỉ hoặc terminal prompt t
 
 ## 2. GitHub Actions - Bước 2
 
-1. Mở run xanh: `https://github.com/thanhfdc/K3-Track2-Day21-CI-CD-for-AI-Systems-DiemCongThanh-2A202601689/actions/runs/32473022564`.
+1. Mở run xanh: `https://github.com/thanhfdc/K3-Track2-Day21-CI-CD-for-AI-Systems-DiemCongThanh-2A202601689/actions/runs/32473557644`.
 2. Ảnh 3: trang summary hiển thị đủ bốn job xanh: Unit Test, Train, Eval, Deploy.
 3. Mở job Train.
 4. Ảnh 4: log `Accuracy: 0.7660`, ba tỷ lệ class và `Promotion approved`.
