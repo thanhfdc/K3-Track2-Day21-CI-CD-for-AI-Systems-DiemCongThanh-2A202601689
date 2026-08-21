@@ -324,3 +324,10 @@ Xem phần xử lý sự cố chi tiết trong từng file hướng dẫn:
 ---
 
 Bắt đầu: [Bước 1 - Thực nghiệm cục bộ](tasks/buoc-1.md)
+
+---
+
+## Bài Nộp
+
+- [Báo cáo lab](LAB_REPORT.md)
+- [Checklist ảnh và bằng chứng](SUBMISSION_EVIDENCE.md)
