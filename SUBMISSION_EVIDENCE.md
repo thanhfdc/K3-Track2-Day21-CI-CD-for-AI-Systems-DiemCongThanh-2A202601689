@@ -58,7 +58,14 @@ curl.exe -X POST "http://$VM_IP`:8000/predict" `
 1. Mở AWS Console → S3 → bucket `mlops-lab-138420161153-us-east-1`.
 2. Ảnh 9: prefix `dvc/files/md5/` có các object dữ liệu.
 3. Ảnh 10: `models/latest/` có `model.pkl`, `metrics.json`, `report.txt`.
-4. Bonus DagsHub: sau khi thêm ba secret MLflow, chạy lại pipeline; ảnh 11 chụp DagsHub MLflow với run `wine-quality-ci` và metrics của run CI.
+4. Bonus DagsHub:
+   - Đăng nhập `https://dagshub.com` bằng GitHub và import repo này.
+   - Trong repo DagsHub, mở **Remote → Experiments** để lấy MLflow tracking URL và access token.
+   - Trong GitHub **Settings → Secrets and variables → Actions**, tạo:
+     - `MLFLOW_TRACKING_URI`: `https://dagshub.com/<DAGSHUB_USER>/<DAGSHUB_REPO>.mlflow`
+     - `MLFLOW_TRACKING_USERNAME`: tên tài khoản DagsHub.
+     - `MLFLOW_TRACKING_PASSWORD`: DagsHub access token, không phải mật khẩu đăng nhập.
+   - Chạy lại pipeline. Ảnh 11 chụp DagsHub MLflow với experiment `wine-quality-ci`, params và metrics của run CI.
 
 ## 6. File nộp
 
