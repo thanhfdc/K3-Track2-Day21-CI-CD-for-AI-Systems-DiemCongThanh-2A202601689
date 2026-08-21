@@ -1,0 +1,16 @@
+CONFUSION MATRIX (rows=true, columns=predicted)
+labels: 0=thap, 1=trung_binh, 2=cao
+[[142  27   4]
+ [ 44 173  10]
+ [  0  32  68]]
+
+PRECISION / RECALL / F1 BY CLASS
+              precision    recall  f1-score   support
+
+        thap     0.7634    0.8208    0.7911       173
+  trung_binh     0.7457    0.7621    0.7538       227
+         cao     0.8293    0.6800    0.7473       100
+
+    accuracy                         0.7660       500
+   macro avg     0.7795    0.7543    0.7641       500
+weighted avg     0.7685    0.7660    0.7654       500
