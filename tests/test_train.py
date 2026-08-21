@@ -2,7 +2,9 @@ import os
 import json
 import numpy as np
 import pandas as pd
-from src.train import train
+import pytest
+from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
+from src.train import build_model, get_label_distribution, train
 
 
 FEATURE_NAMES = [
@@ -64,6 +66,14 @@ def test_metrics_file_created(tmp_path):
         metrics = json.load(f)
     assert "accuracy" in metrics
     assert "f1_score" in metrics
+    assert set(metrics["label_distribution"]) == {"0", "1", "2"}
+    assert sum(metrics["label_distribution"].values()) == pytest.approx(1.0)
+    assert os.path.exists("outputs/report.txt")
+
+    with open("outputs/report.txt", encoding="utf-8") as f:
+        report = f.read()
+    assert "CONFUSION MATRIX" in report
+    assert "PRECISION / RECALL / F1 BY CLASS" in report
 
 
 def test_model_file_created(tmp_path):
@@ -76,3 +86,19 @@ def test_model_file_created(tmp_path):
     )
 
     assert os.path.exists("models/model.pkl")
+
+
+def test_supported_model_types():
+    assert isinstance(
+        build_model({"model_type": "random_forest", "n_estimators": 5}),
+        RandomForestClassifier,
+    )
+    assert isinstance(
+        build_model({"model_type": "extra_trees", "n_estimators": 5}),
+        ExtraTreesClassifier,
+    )
+
+
+def test_label_distribution_includes_missing_classes():
+    distribution = get_label_distribution(pd.Series([0, 0, 1]))
+    assert distribution == pytest.approx({"0": 2 / 3, "1": 1 / 3, "2": 0.0})
